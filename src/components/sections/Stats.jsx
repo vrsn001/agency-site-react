@@ -86,7 +86,6 @@ export default function Stats() {
                 lineHeight: 1,
                 letterSpacing: '-1px',
                 display: 'inline-block',
-                verticalAlign: 'baseline',
               }}>
                 {suffix}
               </span>
