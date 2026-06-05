@@ -320,7 +320,8 @@ body {
     gap: var(--spacing-2xl);
   }
 
-  .process-timeline::before {
+  .process-timeline::before,
+  .process-timeline::after {
     display: none;
   }
 
@@ -342,12 +343,18 @@ body {
   .cards-3 {
     grid-template-columns: 1fr;
   }
+
   .topbar {
-    gap: var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: 0;
   }
 
   .logo {
     font-size: 20px;
+    justify-self: unset;
   }
 
   .nav-left,

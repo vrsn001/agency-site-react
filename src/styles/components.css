@@ -354,15 +354,27 @@
     font-size: 3.25rem;
   }
 
+  .hero-lockup {
+    padding: 48px 24px;
+    border-radius: 20px;
+  }
+
   .section-title {
     font-size: 2rem;
   }
 
   .button,
   .button-secondary {
-    min-height: 48px;
+    min-height: 52px;
     padding: 0 24px;
     font-size: 13px;
+  }
+
+  .mobile-nav-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

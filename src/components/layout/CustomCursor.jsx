@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function CustomCursor() {
+function CursorInner() {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -12,12 +12,8 @@ export default function CustomCursor() {
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-    
-    // Dot position
     let dotX = mouseX;
     let dotY = mouseY;
-    
-    // Ring position
     let ringX = mouseX;
     let ringY = mouseY;
 
@@ -27,14 +23,10 @@ export default function CustomCursor() {
     };
 
     const render = () => {
-      // Dot is fast
       dotX += (mouseX - dotX) * 0.5;
       dotY += (mouseY - dotY) * 0.5;
-      
-      // Ring is slower for a trailing effect
       ringX += (mouseX - ringX) * 0.15;
       ringY += (mouseY - ringY) * 0.15;
-
       dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
       ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
       requestAnimationFrame(render);
@@ -43,7 +35,6 @@ export default function CustomCursor() {
     window.addEventListener('mousemove', onMouseMove);
     const animFrame = requestAnimationFrame(render);
 
-    // Hover state detection
     const handleMouseOver = (e) => {
       const target = e.target;
       if (
@@ -110,4 +101,10 @@ export default function CustomCursor() {
       />
     </>
   );
+}
+
+export default function CustomCursor() {
+  const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+  if (isTouch) return null;
+  return <CursorInner />;
 }

@@ -144,7 +144,7 @@ export default function Contact() {
                   type="submit"
                   className="button"
                   disabled={submitting}
-                  style={{ width: '100%', gap: '8px', cursor: 'none' }}
+                  style={{ width: '100%', gap: '8px' }}
                 >
                   {submitting ? (
                     'Sending…'

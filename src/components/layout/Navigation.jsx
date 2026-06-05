@@ -12,6 +12,11 @@ export default function Navigation() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   const close = () => setMenuOpen(false);
 
   return (
