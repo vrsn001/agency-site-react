@@ -1,0 +1,68 @@
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS & VARIABLES
+   Centralized brand identity and semantic tokens
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Color Palette */
+  --color-void: #050308;
+  --color-surface: #0a0710;
+  --color-panel: #120d1c;
+  --color-text: #faf9f6;
+  --color-muted: #a3a3a3;
+  --color-purple: #b497cf;
+  --color-purple-glow: rgba(180, 151, 207, 0.4);
+
+  /* Semantic Colors */
+  --bg-primary: var(--color-void);
+  --bg-surface: var(--color-surface);
+  --bg-panel: var(--color-panel);
+  --text-primary: var(--color-text);
+  --text-muted: var(--color-muted);
+  --accent: var(--color-purple);
+
+  /* Borders & Dividers */
+  --border-light: 1px solid rgba(255, 255, 255, 0.12);
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.06);
+  --border-accent: 1px solid rgba(180, 151, 207, 0.18);
+
+  /* Backgrounds & Glassmorphism */
+  --bg-glass-light: rgba(255, 255, 255, 0.03);
+  --bg-glass-lighter: rgba(255, 255, 255, 0.02);
+  --bg-glass-accent: rgba(180, 151, 207, 0.05);
+  --bg-glass-accent-light: rgba(180, 151, 207, 0.1);
+  --glass-blur: blur(16px);
+  --glass-blur-sm: blur(8px);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 36px 90px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px var(--color-purple-glow);
+
+  /* Typography Families */
+  --font-serif: 'DM Serif Display', serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-ui: 'Syne', sans-serif;
+
+  /* Spacing Scale */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 96px;
+
+  /* Breakpoints */
+  --breakpoint-lg: 1024px;
+  --breakpoint-md: 720px;
+
+  /* Animation Timings */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+}

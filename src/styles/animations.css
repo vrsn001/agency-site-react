@@ -1,0 +1,329 @@
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS & INTERACTIONS
+   Scroll reveals, hover effects, transitions, and keyframe animations
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────
+   Keyframe Animations
+   ───────────────────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes scrollX {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes flowLine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes iconPop {
+  0%   { opacity: 0; transform: scale(0.4); }
+  65%  { transform: scale(1.18); }
+  82%  { transform: scale(0.94); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes stepSlideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineDraw {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes ripplePulse {
+  0%   { box-shadow: 0 0 0 0 rgba(180, 151, 207, 0.45); }
+  70%  { box-shadow: 0 0 0 14px rgba(180, 151, 207, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(180, 151, 207, 0); }
+}
+
+@keyframes iconSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Scroll Reveal Animations
+   Applied via JavaScript IntersectionObserver
+   ───────────────────────────────────────────────────────────── */
+
+.fade-in-on-scroll {
+  animation: fadeInUp var(--duration-slow) var(--ease-out) both;
+}
+
+.fade-in-scale-on-scroll {
+  animation: fadeInScale var(--duration-slow) var(--ease-out) both;
+}
+
+/* Staggered animation delays */
+.fade-in-on-scroll.delay-1 {
+  animation-delay: 0ms;
+}
+
+.fade-in-on-scroll.delay-2 {
+  animation-delay: 100ms;
+}
+
+.fade-in-on-scroll.delay-3 {
+  animation-delay: 200ms;
+}
+
+.fade-in-on-scroll.delay-4 {
+  animation-delay: 300ms;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Navigation Interactions
+   ───────────────────────────────────────────────────────────── */
+
+.nav-left a,
+.nav-right a {
+  position: relative;
+  transition: color var(--duration-base) var(--ease-in-out);
+}
+
+.nav-left a::after,
+.nav-right a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width var(--duration-base) var(--ease-in-out);
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  color: var(--text-primary);
+}
+
+.nav-left a:hover::after,
+.nav-right a:hover::after {
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Button Interactions
+   ───────────────────────────────────────────────────────────── */
+
+.button,
+.button-secondary {
+  position: relative;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.button:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 24px 48px rgba(180, 151, 207, 0.25);
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+.button-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.button-secondary:active {
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Card Hover Effects
+   ───────────────────────────────────────────────────────────── */
+
+.card {
+  transform: translateY(var(--py, 0px));
+  transition:
+    background-color var(--duration-base) var(--ease-in-out),
+    border-color var(--duration-base) var(--ease-in-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-in-out);
+}
+
+.card:hover {
+  transform: translateY(var(--py, 0px)) scale(1.02);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(180, 151, 207, 0.15);
+}
+
+.card .icon {
+  transition:
+    background-color var(--duration-base) var(--ease-in-out),
+    transform var(--duration-base) var(--ease-in-out);
+}
+
+.card:hover .icon {
+  background-color: rgba(180, 151, 207, 0.16);
+  transform: scale(1.08);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Process Step Interactions
+   ───────────────────────────────────────────────────────────── */
+
+.process-step {
+  transition:
+    background-color var(--duration-base) var(--ease-in-out),
+    border-color var(--duration-base) var(--ease-in-out),
+    transform var(--duration-base) var(--ease-in-out),
+    box-shadow var(--duration-base) var(--ease-in-out);
+}
+
+.process-step:hover {
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.step-num {
+  transition: color var(--duration-base) var(--ease-in-out);
+}
+
+.process-step:hover .step-num {
+  text-shadow: 0 0 10px var(--color-purple-glow);
+  color: rgba(180, 151, 207, 0.8);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Section Animations
+   ───────────────────────────────────────────────────────────── */
+
+.section-header {
+  animation: fadeInUp var(--duration-slow) var(--ease-out) both;
+}
+
+.hero {
+  animation: fadeInUp var(--duration-slow) var(--ease-out) both;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CTA Panel Animations
+   ───────────────────────────────────────────────────────────── */
+
+.cta-panel {
+  transition:
+    background-color var(--duration-base) var(--ease-in-out),
+    border-color var(--duration-base) var(--ease-in-out),
+    transform var(--duration-base) var(--ease-in-out);
+}
+
+.cta-panel:hover {
+  box-shadow: 0 0 15px var(--color-purple-glow);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(180, 151, 207, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Header Animation on Load
+   ───────────────────────────────────────────────────────────── */
+
+.topbar {
+  animation: slideInLeft var(--duration-slow) var(--ease-out);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Smooth Scrolling & General Transitions
+   ───────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  transition: background-color var(--duration-base) var(--ease-in-out);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Reduced Motion Support
+   Respect user's motion preferences
+   ───────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
