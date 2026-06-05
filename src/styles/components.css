@@ -756,7 +756,7 @@
 
 .stat-raw-number {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 2px;
   line-height: 1;
   margin-bottom: 16px;
